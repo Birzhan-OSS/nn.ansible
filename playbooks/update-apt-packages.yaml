@@ -6,5 +6,5 @@
     #Upgrade packages
     - name: update apt packages
       apt:
-      update: yes
-      update_cache: yes
+        update: yes
+        update_cache: yes
