@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Change directory
+      become: true
+      shell: cd /var/www/html/taotesting/data/tao
+
+    - name: Checkout 'trialtesting' branch
+      become: true
+      shell: git checkout trialtesting
+      args:
+        chdir: /var/www/html/taotesting/data/tao
+
+    - name: Pull latest changes
+      become: true
+      shell: git pull
+      args:
+        chdir: /var/www/html/taotesting/data/tao
