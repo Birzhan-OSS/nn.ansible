@@ -2,9 +2,9 @@
 - hosts: all
   become: true
   tasks:
-    - name: Change directory
-      become: true
-      shell: cd /var/www/html/taotesting/data/tao
+    #- name: Change directory
+    #become: true
+    #shell: cd /var/www/html/taotesting/data/tao
 
     - name: Checkout 'trialtesting' branch
       become: true
