@@ -4,7 +4,7 @@
   tasks:
     - name: Change directory
       become: true
-      shell: if [[ ! -d "/var/www/html/taotesting/data/tao/.git" ]]; then rm -rf /var/www/html/taotesting/data/tao && mv /var/www/html/taotesting/data/tao_ /var/www/html/taotesting/data/tao; fi
+      shell: if [[ ! -d "/var/www/html/taotesting/data/tao/.git" ]]; then sudo rm -rf /var/www/html/taotesting/data/tao && sudo mv /var/www/html/taotesting/data/tao_ /var/www/html/taotesting/data/tao; fi
 
     - name: Checkout 'trialtesting' branch
       become: true
