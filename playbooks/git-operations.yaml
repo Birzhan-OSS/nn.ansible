@@ -4,7 +4,7 @@
   tasks:
     - name: Change directory
       become: true
-      shell: if [[ ! -d "/var/www/html/taotesting/data/tao/.git" ]]; then rm -rf tao && mv tao_ tao; fi
+      shell: bash -c 'if [[ ! -d "/var/www/html/taotesting/data/tao/.git" ]]; then rm -rf /var/www/html/taotesting/data/tao && mv /var/www/html/taotesting/data/tao_ /var/www/html/taotesting/data/tao; fi'
       args:
         chdir: /var/www/html/taotesting/data/
 
