@@ -6,14 +6,21 @@
       become: true
       shell: if [[ ! -d "/var/www/html/taotesting/data/tao/.git" ]]; then sudo rm -rf /var/www/html/taotesting/data/tao && sudo mv /var/www/html/taotesting/data/tao_ /var/www/html/taotesting/data/tao; fi
 
-    - name: Checkout 'trialtesting' branch
-      become: true
-      shell:
-        cmd: sudo git checkout trialtesting
-        chdir: /var/www/html/taotesting/data/tao
+    #- name: Checkout 'trialtesting' branch
+    #  become: true
+    #  shell:
+    #    cmd: sudo git checkout trialtesting
+    #    chdir: /var/www/html/taotesting/data/tao
 
-    - name: Pull latest changes
+    - name: Get stuff from git
+      git:
+        repo: git:git@10.2.1.48:/opt/git/project.git
+        dest: /var/www/html/taotesting/data/tao
+        version: trialtesting
       become: true
-      shell:
-        cmd: sudo git pull
-        chdir: /var/www/html/taotesting/data/tao
+
+    #- name: Pull latest changes
+    #  become: true
+    #  shell:
+    #    cmd: sudo git pull
+    #    chdir: /var/www/html/taotesting/data/tao
