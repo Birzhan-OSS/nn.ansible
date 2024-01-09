@@ -16,7 +16,8 @@
       git:
         repo: git:git@10.2.1.48:/opt/git/project.git
         dest: /var/www/html/taotesting/data/tao
-        remote: "origin/trialtesting"
+        remote: "trialtesting"
+        update: yes
       become: true
       become_method: ansible.builtin.su
 
