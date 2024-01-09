@@ -6,23 +6,16 @@
       become: true
       shell: if [[ ! -d "/var/www/html/taotesting/data/tao/.git" ]]; then sudo rm -rf /var/www/html/taotesting/data/tao && sudo mv /var/www/html/taotesting/data/tao_ /var/www/html/taotesting/data/tao; fi
 
-    #- name: Checkout 'trialtesting' branch
-    #  become: true
-    #  shell:
-    #    cmd: sudo git checkout trialtesting
-    #    chdir: /var/www/html/taotesting/data/tao
-
-    - name: Get stuff from git
+    - name: Clone Git repository (if not already cloned)
       git:
         repo: git:git@10.2.1.48:/opt/git/project.git
-        dest: /var/www/html/taotesting/data/tao
-        remote: trialtesting
-        update: yes
-      become: true
-      become_method: ansible.builtin.su
+        dest: /var/www/html/taotesting/data/tao # Directory where the repository will be cloned
+        version: "trialtesting" # Specify the branch name to checkout
+        clone: yes
 
-    #- name: Pull latest changes
-    #  become: true
-    #  shell:
-    #    cmd: sudo git pull
-    #    chdir: /var/www/html/taotesting/data/tao
+    # Optionally, if the repository is already cloned and you just need to checkout a specific branch
+    - name: Checkout specific branch
+      git:
+        repo: /var/www/html/taotesting/data/tao # Path to the already cloned repository
+        version: "trialtesting" # Specify the branch name to checkout
+        update: yes
