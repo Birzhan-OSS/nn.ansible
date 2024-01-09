@@ -8,12 +8,12 @@
 
     - name: Checkout 'trialtesting' branch
       become: true
-      shell: sudo git checkout trialtesting
-      args:
+      shell:
+        cmd: sudo git checkout trialtesting
         chdir: /var/www/html/taotesting/data/tao
 
     - name: Pull latest changes
       become: true
-      shell: sudo git pull
-      args:
+      shell:
+        cmd: sudo git pull
         chdir: /var/www/html/taotesting/data/tao
